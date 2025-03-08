@@ -21,10 +21,10 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
             key={category.id}
             onClick={() => setActiveCategory(category.id)}
             className={cn(
-              "whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+              "whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium transition-all duration-300",
               activeCategory === category.id
-                ? "bg-accent text-accent-foreground shadow-md"
-                : "bg-secondary text-secondary-foreground hover:bg-accent/20"
+                ? "bg-primary text-primary-foreground shadow-md"
+                : "bg-secondary text-secondary-foreground hover:bg-primary/20"
             )}
           >
             <span className="flex items-center space-x-2">

@@ -29,10 +29,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
   return (
     <Card
       className={cn(
-        "overflow-hidden transition-all duration-300 group h-full flex flex-col",
-        featured ? "border-accent/20" : "border-border/50",
+        "overflow-hidden transition-all duration-300 group h-full flex flex-col relative",
+        featured ? "border-primary/40" : "border-border",
         isHovered ? "shadow-lg translate-y-[-4px]" : "shadow-sm",
-        "hover:border-accent/40 backdrop-blur-sm bg-background/80"
+        "hover:border-primary/60 backdrop-blur-sm bg-card"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -58,7 +58,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
         
         {featured && (
           <div className="absolute top-2 right-2">
-            <span className="bg-accent text-accent-foreground text-xs font-medium px-2 py-1 rounded-full animate-pulse">
+            <span className="bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded-full animate-pulse">
               Popular
             </span>
           </div>
@@ -68,8 +68,8 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
       <div className="flex flex-col flex-grow p-4">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-medium text-base">{item.name}</h3>
-          <div className="font-semibold text-right">
-            ₹{item.price}
+          <div className="font-semibold text-primary">
+            ₹{item.price}/-
           </div>
         </div>
         
@@ -85,7 +85,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
               <Button
                 size="sm"
                 variant="outline"
-                className="h-8 px-2"
+                className="h-8 px-2 border-primary/50 hover:bg-primary/10"
                 onClick={() => decreaseQuantity(item.id)}
               >
                 <MinusCircle className="h-4 w-4" />
@@ -96,7 +96,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
               <Button
                 size="sm"
                 variant="outline"
-                className="h-8 px-2"
+                className="h-8 px-2 border-primary/50 hover:bg-primary/10"
                 onClick={() => increaseQuantity(item.id)}
               >
                 <PlusCircle className="h-4 w-4" />
@@ -104,7 +104,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
             </div>
           ) : (
             <Button 
-              className="w-full group transition-all" 
+              className="w-full group transition-all bg-primary hover:bg-primary/90 text-primary-foreground" 
               onClick={handleAddToCart}
               variant="default"
             >
@@ -113,6 +113,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, featured = false }) =
             </Button>
           )}
         </div>
+      </div>
+      
+      {/* Leaf decoration */}
+      <div className="absolute bottom-0 right-0 w-6 h-6 opacity-80 pointer-events-none">
+        <img 
+          src="/lovable-uploads/258448d8-c0fb-47e6-818c-bd07111c77e2.png" 
+          alt="" 
+          className="w-full h-full object-contain transform scale-75 rotate-45"
+        />
       </div>
     </Card>
   );

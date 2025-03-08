@@ -42,14 +42,15 @@ const Header: React.FC = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
         isScrolled 
-          ? "py-2 bg-background/80 backdrop-blur-md shadow-sm" 
-          : "py-4 bg-transparent"
+          ? "py-2 bg-background/90 backdrop-blur-md shadow-sm" 
+          : "py-4 bg-background"
       )}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 transition-opacity hover:opacity-90">
-          <span className="text-xl font-bold animate-fade-in">Friesie Delight</span>
+        <Link to="/" className="flex flex-col items-center transition-opacity hover:opacity-90">
+          <span className="text-2xl font-bold text-primary animate-fade-in">NSTM</span>
+          <span className="text-xs text-primary/80">Namaku Soru Than Mukiyam</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -59,15 +60,15 @@ const Header: React.FC = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-all hover:text-accent relative px-1 py-2",
+                "text-sm font-medium transition-all hover:text-primary relative px-1 py-2",
                 location.pathname === item.path 
-                  ? "text-accent" 
+                  ? "text-primary" 
                   : "text-foreground/80 hover:text-foreground"
               )}
             >
               {item.name}
               {location.pathname === item.path && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent rounded-full animate-fade-in" />
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full animate-fade-in" />
               )}
             </Link>
           ))}
@@ -79,11 +80,11 @@ const Header: React.FC = () => {
             <Button 
               variant="ghost" 
               size="icon"
-              className="relative hover:bg-accent/10 transition-all"
+              className="relative hover:bg-primary/10 transition-all"
             >
               <ShoppingCart className="h-5 w-5" />
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground rounded-full text-xs w-5 h-5 flex items-center justify-center animate-scale-in">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full text-xs w-5 h-5 flex items-center justify-center animate-scale-in">
                   {itemCount}
                 </span>
               )}
@@ -117,8 +118,8 @@ const Header: React.FC = () => {
               className={cn(
                 "text-lg font-medium py-2 px-4 border-b border-border/30 transition-all",
                 location.pathname === item.path 
-                  ? "text-accent border-accent" 
-                  : "text-foreground/80 hover:text-accent"
+                  ? "text-primary border-primary" 
+                  : "text-foreground/80 hover:text-primary"
               )}
               onClick={closeMobileMenu}
             >
